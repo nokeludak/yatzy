@@ -1,0 +1,174 @@
+.App {
+  text-align: center;
+}
+
+
+
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+
+
+.Dice {
+  margin: 1px;
+  display: flex;
+  justify-content: space-between;
+  
+}
+
+.Die {
+  color: white;
+  text-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.Die-locked {
+  opacity: 0.5;
+  text-shadow: none;
+}
+
+.Die:not(.Die-locked):hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+.Die-rolling {
+  animation: spin 1s ease-out;
+}
+
+.Die-rolling:hover,
+.Die[disabled] {
+  cursor: not-allowed;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.Game {
+  width: 50%;
+  background: white;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.1);
+  margin: 0 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+  h2 {
+    font-weight: 100;;
+    border-bottom: 2px solid purple;
+    display: inline-block;
+  }
+  .dice-section {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+    
+  }
+  
+  .button-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+  }
+  
+  .reroll {
+    font-size: 2em;
+    color: white;
+    font-weight: 100;
+    transition: 0.5s;
+    background-size: 200% auto;
+    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.1);
+    background-image: linear-gradient(
+      to right,
+      #91eae4 0%,
+      #7f7fd5 51%,
+      #91eae4 100%
+    );
+    border-radius: 0.5rem;
+    border: none;
+    width: 50%;
+  
+    margin-bottom: 2rem;
+  }
+  
+  .reroll:hover {
+    cursor: pointer;
+    background-position: right center;
+  }
+  
+  .reroll:active,
+  .reroll:focus {
+    outline: none;
+  }
+  
+  .reroll:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+  
+  .description {
+    font-style: italic;
+    color: white;
+  }
+  
+  .header {
+    color: white;
+    width: 100%;
+    background: linear-gradient(-45deg, #673ab7, #9c27b0);
+    background-size: 400% 400%;
+    
+  }
+
+  @keyframes Gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+
+  .ScoreTable {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.9rem;
+    width: 80%;
+    background-color: white;
+    padding: 1em;
+  }
+  
+    table {
+      width: 100%;
+      margin-left: -10px;
+      min-width: 400px;
+      
+    }
+  
+    section {
+      vertical-align: top;
+      width: 100%;
+    }
+  
+
