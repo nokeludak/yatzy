@@ -22,13 +22,16 @@
   margin: 1px;
   display: flex;
   justify-content: space-between;
+ 
   
 }
 
 .Die {
-  color: white;
-  text-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.1);
+  color: rgb(172, 221, 188);
+  text-shadow: 0 19px 38px rgba(160, 70, 70, 0.3), 0 15px 12px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
+  
+ 
 }
 
 .Die-locked {
@@ -70,7 +73,7 @@
 }
   h2 {
     font-weight: 100;;
-    border-bottom: 2px solid purple;
+    border-bottom: 2px solid rgb(29, 20, 29);
     display: inline-block;
   }
   .dice-section {
@@ -86,6 +89,7 @@
     justify-content: center;
     align-items: center;
     width: auto;
+    border-radius: 22px;
   }
   
   .reroll {
@@ -97,12 +101,12 @@
     box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.1);
     background-image: linear-gradient(
       to right,
-      #91eae4 0%,
-      #7f7fd5 51%,
+      #da221c 0%,
+      #17179c 51%,
       #91eae4 100%
     );
-    border-radius: 0.5rem;
-    border: none;
+    border-radius: 100px 25px;
+    border: 2px solid white;
     width: 50%;
   
     margin-bottom: 2rem;
@@ -132,8 +136,9 @@
   .header {
     color: white;
     width: 100%;
-    background: linear-gradient(-45deg, #673ab7, #9c27b0);
+    background: linear-gradient(-45deg, #a797c4, #111011);
     background-size: 400% 400%;
+    border-radius: 50px 200px;
     
   }
 
