@@ -170,5 +170,17 @@
       vertical-align: top;
       width: 100%;
     }
+
+   .reset{
+     width: 150px;
+     border-radius: 4px;
+     background-color: blueviolet;
+     margin-bottom: 10px;
+     color: cornsilk;
+     height: 30px;
+     border: none;
+     cursor: pointer;
+     font-size: larger;
+   }
   
 

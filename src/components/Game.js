@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Dice from './Dice';
 
 
@@ -29,9 +29,9 @@ function Game() {
       chance: undefined
     }
   });
-
+  const [counter, setCounter] = useState(0)
   function roll(event) {
-    // roll dice whose indexes are in reroll
+    
     setGameState(gs => ({
       ...gameState,
       dice: gs.dice.map((d, i) =>
@@ -51,8 +51,32 @@ function Game() {
     setTimeout(roll, 1000);
   }
 
+  const resetHandler = () => {
+  setGameState({
+  dice: Array.from({ length: NUM_DICE }),
+    locked: Array(NUM_DICE).fill(false),
+    rollsLeft: NUM_ROLLS,
+    rolling: false,
+    scores: {
+      ones: undefined,
+      twos: undefined,
+      threes: undefined,
+      fours: undefined,
+      fives: undefined,
+      sixes: undefined,
+      threeOfKind: undefined,
+      fourOfKind: undefined,
+      fullHouse: undefined,
+      smallStraight: undefined,
+      largeStraight: undefined,
+      yahtzee: undefined,
+      chance: undefined
+  },
+});
+  setCounter(0);
+  };
   function toggleLocked(idx) {
-    // toggle whether idx is in locked or not
+    
 
     if (gameState.rollsLeft > 0 && !gameState.rolling) {
       setGameState(gs => ({
@@ -65,17 +89,28 @@ function Game() {
       }));
     }
   }
-
+    
   function doScore(ruleName, ruleFn) {
-    // evaluate this ruleFn with the dice and score this rulename
+    
     setGameState(gs => ({
       ...gameState,
       scores: { ...gs.scores, [ruleName]: ruleFn(gameState.dice) },
       rollsLeft: NUM_ROLLS,
       locked: Array(NUM_DICE).fill(false)
+      
     }));
-    //animateRoll();
+    setCounter(counter +1);
+   
   }
+  useEffect(() => {
+    if (counter === 13) {
+      setGameState((gs) => ({
+        ...gameState,
+        rollsLeft: 0,
+
+      }));
+  }
+}, [counter]);
 
   function displayRollInfo() {
     const messages = [
@@ -117,6 +152,11 @@ function Game() {
         </section>
       </header>
       <ScoreTable doScore={doScore} scores={gameState.scores} />
+      {counter === 13 ? (
+        <button className="reset" onClick={resetHandler}>Play Again</button>
+      ) : (
+        <div></div>
+      )}
     </div>
   );
 }

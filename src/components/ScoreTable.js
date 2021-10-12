@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import RuleRow from './RuleRow';
 import {
   ones,
@@ -15,19 +15,49 @@ import {
   yahtzee,
   chance
 } from './Rules';
-
-
-
-function ScoreTable({ scores, doScore }) {
+function ScoreTable({ scores, doScore, counter }) {
+  const [highScores, setHighScores] = useState(Number)
   function getTotalScore() {
-    let totalScore = 0;
+    let totalScore = 0
     for (let key in scores) {
-      if (scores[key]) totalScore += scores[key];
+      if (scores[key]) totalScore += scores[key]
     }
-
+    localStorage.setItem("totalScore", totalScore)
+    if (totalScore > 0) {
+      if (totalScore > localStorage.getItem("highScores", highScores)) {
+        setHighScores(totalScore)
+        localStorage.setItem('highScores', highScores)
+      }
+    }
     return totalScore;
   }
 
+
+
+  
+ 
+  
+//   var score = []
+//   var highscore = localStorage.getItem("highscore");
+
+// if(highscore !== null){
+  
+//     if (score > highscore) {
+//         localStorage.setItem("highscore", scores);      
+//     }
+// }
+// else{
+  
+//     localStorage.setItem("highscore", scores);
+// }
+
+useEffect(()=> {
+  if (highScores > localStorage.getItem("highScore")) {
+  localStorage.setItem(highScores, "highScore")
+  }
+},[highScores]);
+
+ 
   return (
     <div className='ScoreTable'>
       <section className='section'>
@@ -123,6 +153,8 @@ function ScoreTable({ scores, doScore }) {
         </table>
       </section>
       <h2>Total Score: {getTotalScore()}</h2>
+      
+     
     </div>
   );
 }
