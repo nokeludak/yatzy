@@ -5,7 +5,7 @@ import Dice from './Dice';
 import ScoreTable from './ScoreTable';
 
 const NUM_DICE = 5;
-const NUM_ROLLS = 2;
+const NUM_ROLLS = 3;
 
 function Game() {
   const [gameState, setGameState] = useState({
@@ -91,15 +91,18 @@ function Game() {
   }
     
   function doScore(ruleName, ruleFn) {
-    
+    if (!gameState.rolling) {
     setGameState(gs => ({
       ...gameState,
-      scores: { ...gs.scores, [ruleName]: ruleFn(gameState.dice) },
+      scores: { ...gs.scores, [ruleName]: ruleFn(gameState.dice), },
       rollsLeft: NUM_ROLLS,
       locked: Array(NUM_DICE).fill(false)
       
     }));
     setCounter(counter +1);
+    
+    
+  }
    
   }
   useEffect(() => {
@@ -117,11 +120,12 @@ function Game() {
       '0 Rolls Left',
       '1 Roll Left',
       '2 Rolls Left',
-      'Starting Round'
+      'Start Round',
     ];
     return messages[gameState.rollsLeft];
   }
 
+  
   return (
     <div className='Game'>
       <header className='header'>
@@ -151,7 +155,7 @@ function Game() {
           </div>
         </section>
       </header>
-      <ScoreTable doScore={doScore} scores={gameState.scores} />
+      <ScoreTable animateRoll={animateRoll} doScore={doScore} scores={gameState.scores} />
       {counter === 13 ? (
         <button className="reset" onClick={resetHandler}>Play Again</button>
       ) : (

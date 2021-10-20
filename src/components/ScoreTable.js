@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import RuleRow from './RuleRow';
+
 import {
   ones,
   twos,
@@ -15,7 +16,7 @@ import {
   yahtzee,
   chance
 } from './Rules';
-function ScoreTable({ scores, doScore, counter }) {
+function ScoreTable({ scores, doScore, animateRoll }) {
   const [highScores, setHighScores] = useState(Number)
   function getTotalScore() {
     let totalScore = 0
@@ -30,10 +31,15 @@ function ScoreTable({ scores, doScore, counter }) {
       }
     }
     return totalScore;
+
+    
   }
-
-
-
+ 
+   
+  useEffect(() => {
+    animateRoll()
+   }, [scores]);
+      
   
  
   
@@ -52,9 +58,9 @@ function ScoreTable({ scores, doScore, counter }) {
 // }
 
 useEffect(()=> {
-  if (highScores > localStorage.getItem("highScore")) {
-  localStorage.setItem(highScores, "highScore")
-  }
+if (highScores > localStorage.getItem("highScore")) {
+localStorage.setItem(highScores, "highScore")
+}
 },[highScores]);
 
  
@@ -69,6 +75,7 @@ useEffect(()=> {
               score={scores.ones}
               description={ones.description}
               doScore={evt => doScore('ones', ones.evalRoll)}
+              
             />
             <RuleRow
               name='Twos'

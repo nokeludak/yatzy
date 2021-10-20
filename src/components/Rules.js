@@ -1,12 +1,3 @@
-/** Rule for Yahtzee scoring.
- *
- * This is an "abstract class"; the real rules are subclasses of these.
- * This stores all parameters passed into it as properties on the instance
- * (to simplify child classes so they don't need constructors of their own).
- *
- * It contains useful functions for summing, counting values, and counting
- * frequencies of dice. These are used by subclassed rules.
- */
 
  class Rule {
     constructor(params) {
