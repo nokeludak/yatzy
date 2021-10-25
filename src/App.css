@@ -1,7 +1,11 @@
 .App {
-  text-align: center;
+  text-align:center;
+  
 }
 
+body {
+  max-width: 100%;
+}
 
 
 
@@ -77,6 +81,7 @@ color: white;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  
 }
   h2 {
     font-weight: 100;;

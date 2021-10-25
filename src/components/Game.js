@@ -113,7 +113,7 @@ function Game() {
 
       }));
   }
-}, [counter]);
+}, [counter]); // eslint-disable-line react-hooks/exhaustive-deps
 
   function displayRollInfo() {
     const messages = [

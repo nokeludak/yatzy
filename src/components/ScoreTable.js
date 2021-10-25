@@ -18,6 +18,7 @@ import {
 } from './Rules';
 function ScoreTable({ scores, doScore, animateRoll }) {
   const [highScores, setHighScores] = useState(Number)
+
   function getTotalScore() {
     let totalScore = 0
     for (let key in scores) {
@@ -34,11 +35,15 @@ function ScoreTable({ scores, doScore, animateRoll }) {
 
     
   }
+
+  let getHighScores = localStorage.getItem("highScores", highScores);
+
+  
  
    
-  useEffect(() => {
-    animateRoll()
-   }, [scores]);
+ useEffect(() => {
+ animateRoll()
+ }, [scores]); // eslint-disable-line react-hooks/exhaustive-deps
       
   
  
@@ -160,7 +165,7 @@ localStorage.setItem(highScores, "highScore")
         </table>
       </section>
       <h2>Total Score: {getTotalScore()}</h2>
-      
+      <h3>High Score: {getHighScores}</h3>
      
     </div>
   );
